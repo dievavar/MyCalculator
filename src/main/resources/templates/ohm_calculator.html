@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор закона Ома</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://plus.unsplash.com/premium_photo-1661663603858-2df08fe3d65d?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10%;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .form-control:disabled {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .btn-custom {
+            background-color: #F0E68C;
+            border-color: #F0E68C;
+            color: black;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #1e88e5;
+            border-color: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Калькулятор закона Ома</h1>
+    <p class="text-center">Введите две переменные, чтобы вычислить третью:</p>
+    <form th:action="@{/ohm/calculate}" method="post" th:object="${ohmRequest}">
+        <div class="mb-3">
+            <label for="voltage" class="form-label">Напряжение (V):</label>
+            <input type="number" id="voltage" th:field="*{voltage}" class="form-control" placeholder="Введите напряжение" step="0.01">
+        </div>
+        <div class="mb-3">
+            <label for="current" class="form-label">Ток (I):</label>
+            <input type="number" id="current" th:field="*{current}" class="form-control" placeholder="Введите ток" step="0.01">
+        </div>
+        <div class="mb-3">
+            <label for="resistance" class="form-label">Сопротивление (R):</label>
+            <input type="number" id="resistance" th:field="*{resistance}" class="form-control" placeholder="Введите сопротивление" step="0.01">
+        </div>
+        <button type="submit" class="btn btn-custom w-100">Вычислить</button>
+    </form>
+
+    <!-- Отображение результата -->
+    <div th:if="${result != null}" class="mt-4">
+        <h3 class="text-center">Результат:</h3>
+        <p class="text-center" th:if="${result.voltage != null}">Напряжение (V): <span th:text="${result.voltage}"></span></p>
+        <p class="text-center" th:if="${result.current != null}">Ток (I): <span th:text="${result.current}"></span></p>
+        <p class="text-center" th:if="${result.resistance != null}">Сопротивление (R): <span th:text="${result.resistance}"></span></p>
+    </div>
+
+    <!-- Отображение ошибки -->
+    <div th:if="${error != null}" class="alert alert-danger mt-4">
+        <p class="text-center" th:text="${error}"></p>
+    </div>
+
+    <div class="mt-3 text-center">
+        <a href="/" class="btn btn-secondary">На главную</a>
+    </div>
+    <div class="d-flex justify-content-center mt-3" sec:authorize="isAuthenticated()">
+        <a href="/ohm/history" class="btn btn-history">Просмотреть историю</a>
+    </div>
+</div>
+</body>
+</html>

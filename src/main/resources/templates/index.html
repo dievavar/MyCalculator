@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Фоновое изображение */
+        body {
+            background-image: url('https://plus.unsplash.com/premium_photo-1661663603858-2df08fe3d65d?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover; /* Растягиваем фон на весь экран */
+            background-position: center; /* Центрируем фон */
+            background-repeat: no-repeat; /* Убираем повторение фона */
+            height: 100vh; /* Занимаем всю высоту экрана */
+            color: white; /* Белый текст для контраста */
+        }
+
+        /* Стилизация контейнера */
+        .container {
+            background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный фон */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10%;
+        }
+
+        /* Стилизация кнопок */
+        .btn-custom-primary {
+            background-color: #D2B48C;
+            border-color: #D2B48C;
+            color: black; /* Черный текст для контраста */
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #e0c79b; /* Темнее при наведении */
+            border-color: #e0c79b;
+        }
+
+        .btn-custom-secondary {
+            background-color: #D2B48C;
+            border-color: #D2B48C;
+            color: black; /* Черный текст для контраста */
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom-secondary:hover {
+            background-color: #b89a7a; /* Темнее при наведении */
+            border-color: #b89a7a;
+        }
+
+        .btn-logout {
+            background-color: #ff4d4d; /* Красный цвет для кнопки выхода */
+            border-color: #ff4d4d;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background-color: #cc0000; /* Темнее при наведении */
+            border-color: #cc0000;
+        }
+
+        .btn-admin {
+            background-color: #2E8B57;
+            border-color: #2E8B57;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-admin:hover {
+            background-color: #45a049; /* Темнее при наведении */
+            border-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Добро пожаловать!</h1>
+    <p class="text-center">Выберите калькулятор:</p>
+    <div class="d-flex justify-content-center">
+        <a href="/currency/convert" class="btn btn-custom-secondary">Конвертер валют</a>
+        <a href="/ohm/calculate" class="btn btn-custom-secondary">Калькулятор закона Ома</a>
+    </div>
+
+    <!-- Кнопка управления пользователями (только для администратора) -->
+    <div class="d-flex justify-content-center mt-3" sec:authorize="hasRole('ADMIN')">
+        <a href="/users" class="btn btn-admin">Управление пользователями</a>
+    </div>
+
+    <!-- Кнопка выхода -->
+    <div class="d-flex justify-content-center mt-3">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-logout">Выйти</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

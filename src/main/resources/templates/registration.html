@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Система работы со студентами | Регистрация </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style>
+    body {
+        background-image: url('https://plus.unsplash.com/premium_photo-1678567672060-fb4eb9e6a004?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    .registration-container {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+    .registration-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .registration-container form {
+        display: flex;
+        flex-direction: column;
+    }
+    .registration-container form div {
+        margin-bottom: 15px;
+    }
+    .registration-container form label {
+        font-weight: bold;
+    }
+    .registration-container form input[type="text"],
+    .registration-container form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .registration-container form input[type="submit"] {
+        background-color: #4169E1;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .registration-container form input[type="submit"]:hover {
+        background-color: #218838; /* Темно-зеленый при наведении */
+    }
+    .registration-container a {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #4169E1;
+        text-decoration: none;
+    }
+    .registration-container a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="registration-container">
+  <h2>Добавить нового пользователя</h2>
+  <form action="#" th:action="@{/registration}" th:object="${users}" method="post">
+    <div>
+      <label for="username">Имя пользователя:</label>
+      <input type="text" id="username" th:field="*{username}" required>
+    </div>
+    <div>
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" th:field="*{password}" required>
+    </div>
+    <div>
+      <label for="role">Роль:</label>
+      <select id="role" th:field="*{role}">
+        <option value="USER">Пользователь</option>
+        <option value="ADMIN">Администратор</option>
+      </select>
+    </div>
+    <button type="submit">Зарегистрироваться</button>
+  </form>
+  <a href="/login">Вернуться к странице входа</a>
+
+</div>
+</body>
+</html>
