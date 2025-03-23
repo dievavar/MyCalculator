@@ -29,4 +29,18 @@ PostgreSQL: база данных для хранения пользовател
 Thymeleaf: шаблонизатор для создания динамических веб-страниц.
 Bootstrap: используется для стилизации фронтенда.
 HTML/CSS: для создания пользовательского интерфейса.
-![Uploading Снимок экрана 2025-03-23 в 17.14.16.png…]()
+
+<img width="1680" alt="Снимок экрана 2025-03-23 в 17 15 28" src="https://github.com/user-attachments/assets/b9efb08b-0a09-4b11-b4c6-7144ffa5ffa0" />
+
+<img width="1680" alt="Снимок экрана 2025-03-23 в 17 16 09" src="https://github.com/user-attachments/assets/ea30e83c-798f-4a88-9c8f-b04f33c86e72" />
+
+<img width="1680" alt="Снимок экрана 2025-03-23 в 17 16 47" src="https://github.com/user-attachments/assets/43d4594f-b876-4a11-8a9a-8b8cc579d937" />
+
+<img width="1680" alt="Снимок экрана 2025-03-23 в 17 17 10" src="https://github.com/user-attachments/assets/734dc7f2-17be-4723-beb8-043002bb413a" />
+
+<img width="1680" alt="Снимок экрана 2025-03-23 в 17 17 37" src="https://github.com/user-attachments/assets/90fe608a-bafb-4fa2-bb0f-545cdcba389a" />
+
+<img width="1680" alt="Снимок экрана 2025-03-23 в 17 18 23" src="https://github.com/user-attachments/assets/8f593be1-bd8d-4036-aa88-50e62808928d" />
+
+<img width="1671" alt="Снимок экрана 2025-03-23 в 17 19 13" src="https://github.com/user-attachments/assets/d1f7f3d6-6504-449d-9d96-04d2b171ccda" />
+
